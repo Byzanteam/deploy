@@ -1,0 +1,53 @@
+common:
+  logPath: /data/nitrogen_log/
+  maxPageSize: 500
+  defaultPageSize: 15
+  logLevel: DEBUG
+  logFileRemain: 7
+  checkDsInterval: 5
+etl:
+  log: DEBUG
+  maxWaitCount: 1000
+  maxChanLen: 1000
+  maxWaitTime: 30
+gateway:
+  httpPort: 8080
+cache:
+  defaultExpiration: 60
+  cleanupInterval: 1440
+redis:
+  # TODO change this into real ip or dns
+  redisUrl: redis://:@REDIS_HOST:6379/0
+rabbitMq:
+  rabbitMqUrl: amqp://MQ_USER:MQ_PASS@NitrogenRM:5672
+  rawDataQueue: raw_table_data
+  rawDataRoutingKey: table_data
+  rawDataExchange: raw_data
+postgreSQL:
+  host: NitrogenPG
+  port: 5432
+  user: postgres
+  readUser: postgres
+  readUserPwd: DB_PASSWORD
+  password: DB_PASSWORD
+  dbName: DB_NAME
+  testDBName: test
+geoCode:
+  APIUrl: https://restapi.amap.com/v3/geocode/geo?key=GEO_KEY&address=
+auth:
+  Port: authentication:50051
+project:
+  Port: projects:50052
+  NamespaceID: 1
+  AppID: APP_ID
+  AppSecret: APP_SECRET
+  AppDomain: APP_DOMAIN
+  OrgURLSuffix: api/v4/organizations/
+  FounderID: 1
+dataSource:
+  url: http://dataSource:5000/configuration/datasource
+elasticsearch:
+  Port: 9200
+  Host: http://NitrogenMaster
+authToken:
+  Token: TOKEN
