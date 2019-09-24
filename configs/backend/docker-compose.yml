@@ -17,7 +17,7 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-    - ${POSTGRES_PATH}:/var/lib/postgresql
+    - ${POSTGRES_PATH}:/var/lib/postgresql/data:z
 
   rabbitmq:
     image: ${RABITTMQ_IMAGE}

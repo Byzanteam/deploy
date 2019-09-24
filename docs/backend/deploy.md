@@ -13,6 +13,8 @@
 
 ```shell
 sudo sysctl -w vm.max_map_count=262144
+sudo mkdir /data
+sudo chmod 777 /data
 # ES_MASTER_PATH 
 sudo mkdir -p /data/master
 sudo chmod g+rws /data/master
