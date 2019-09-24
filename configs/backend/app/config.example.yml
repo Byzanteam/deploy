@@ -17,7 +17,7 @@ cache:
   cleanupInterval: 1440
 redis:
   # TODO change this into real ip or dns
-  redisUrl: redis://:@REDIS_HOST:6379/0
+  redisUrl: redis://:@redis:6379/0
 rabbitMq:
   rabbitMqUrl: amqp://MQ_USER:MQ_PASS@NitrogenRM:5672
   rawDataQueue: raw_table_data

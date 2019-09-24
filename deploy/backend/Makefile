@@ -20,15 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-DOCKER_COMPOSE_FILE?=../../configs/backend/docker-compose.yml
+DOCKER_COMPOSE_FILE?=docker-compose.yml
 DC=docker-compose --compatibility -f $(DOCKER_COMPOSE_FILE)
 
 .PHONY: up
 up: check-stage
+	cd configs/backend && \
 	$(DC) up -d
 
 .PHONY: down
 down:
+	cd configs/backend && \
 	$(DC) down
 
 .PHONY: check-stage

@@ -20,6 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-.PHONY: up-backend
-up-backend: 
+.PHONY: start-backend
+start-backend: 
 	make -f deploy/backend/Makefile up
+
+.PHONY: stop-backend
+stop-backend: 
+	make -f deploy/backend/Makefile down	

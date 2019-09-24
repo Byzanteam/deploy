@@ -32,6 +32,15 @@ services:
     networks:
     - nitrogen
 
+  redis:
+    image: ${REDIS_IMAGE}
+    container_name: ${REDIS_NAME}
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ${REDIS_PATH}:/data
+    networks:
+      - nitrogen      
+
   minio:
     image: ${MINIO_IMAGE}
     container_name: ${MINIO_NAME}

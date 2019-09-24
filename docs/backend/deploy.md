@@ -18,10 +18,22 @@ sudo mkdir -p /data/master
 sudo chmod g+rws /data/master
 # PG_PATH
 sudo mkdir -p /data/pg
+# REDIS PATH
+sudo mkdir -p /data/redis
 # MINIO_PATH
 sudo mkdir -p /data/minio
 # LOGS_PATH
 sudo mkdir -p /data/nitrogen_log
+```
+
+#### 拷贝配置文件
+
+从默认配置文件模版拷贝一份出来使用
+
+```shell
+cp configs/backend/app/config.example.yml configs/backend/app/config.default.yml 
+cp configs/backend/.env.example configs/backend/.env
+cp configs/backend/api.local.example.env configs/backend/api.local.env
 ```
 
 #### 修改配置文件
@@ -31,22 +43,21 @@ sudo mkdir -p /data/nitrogen_log
 
 |阶段名|STAGE|文件名|
 |:--:|:--:|:--:|
-|默认|DEFAULT|api.default.yml|
-|生产|PROD|api.prod.yml|
-|测试|TEST|api.test.yml|
+|默认|DEFAULT|config.default.yml|
+|生产|PROD|config.prod.yml|
+|测试|TEST|config.test.yml|
 
 例如:
 
 ```
 vi configs/backend/.env # 将STAGE设置为DEFAULT
-cp api.STAGE.yml api.default.yml
+cp config.STAGE.yml config.default.yml
 ```
 
 #### 替换环境变量
 
 |变量名|默认值|描述|
 |:--:|:--:|:--:|
-|REDIS_HOST|localhost|redis服务器地址|
 |MQ_USER|guest|RABBITMQ用户名|
 |MQ_PASS|guest|RABBITMQ密码|
 |GEO_KEY|无|geo服务所需密钥|
@@ -68,5 +79,6 @@ cp api.STAGE.yml api.default.yml
 #### 启动后台
 
 ```shell
+export STAGE=DEFAULT # 替换成所使用的STAGE
 make up-backend
 ```
