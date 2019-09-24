@@ -80,5 +80,5 @@ cp config.STAGE.yml config.default.yml
 
 ```shell
 export STAGE=DEFAULT # 替换成所使用的STAGE
-make up-backend
+make start-backend
 ```
