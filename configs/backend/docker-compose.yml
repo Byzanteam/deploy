@@ -46,7 +46,6 @@ services:
     container_name: ${MINIO_NAME}
     volumes:
     - ./databot/minio/config:/config
-    - ./wait-for.sh:/build/wait-for.sh
     ports:
     - ${MINIO_PORT}:9000
 #    restart: always
