@@ -28,6 +28,11 @@ up:
 	cd configs/backend && \
 	$(DC) up -d
 
+.PHONY: pull
+pull: 
+	cd configs/backend && \
+	$(DC) pull
+
 .PHONY: down
 down:
 	cd configs/backend && \

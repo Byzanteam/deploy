@@ -26,6 +26,10 @@ cp-backend-config:
 	cp configs/backend/.env.example configs/backend/.env
 	cp configs/backend/api.local.example.env configs/backend/api.local.env
 
+.PHONY: pull-backend
+start-backend: 
+	make -f deploy/backend/Makefile pull
+
 .PHONY: start-backend
 start-backend: 
 	make -f deploy/backend/Makefile up

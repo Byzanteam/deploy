@@ -34,6 +34,14 @@ sudo mkdir -p /data/nitrogen_log
 make cp-backend-config
 ```
 
+#### 后台拉取镜像
+
+`新开启一个终端后执行下面命令`
+
+```shell
+make pull-backend
+```
+
 #### 修改配置文件
 
  1. 配置目录 `configs/backend/.env`中的环境变量 `STAGE`
