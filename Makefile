@@ -20,6 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+.PHONY: cp-backend-config
+cp-backend-config: 
+	cp configs/backend/app/config.example.yml configs/backend/app/config.default.yml 
+	cp configs/backend/.env.example configs/backend/.env
+	cp configs/backend/api.local.example.env configs/backend/api.local.env
+
 .PHONY: start-backend
 start-backend: 
 	make -f deploy/backend/Makefile up

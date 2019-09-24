@@ -24,7 +24,7 @@ DOCKER_COMPOSE_FILE?=docker-compose.yml
 DC=docker-compose --compatibility -f $(DOCKER_COMPOSE_FILE)
 
 .PHONY: up
-up: check-stage
+up: 
 	cd configs/backend && \
 	$(DC) up -d
 
@@ -32,9 +32,3 @@ up: check-stage
 down:
 	cd configs/backend && \
 	$(DC) down
-
-.PHONY: check-stage
-check-stage:
-ifndef STAGE
-	$(error 阶段环境变量未设置)
-endif

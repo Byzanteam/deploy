@@ -31,9 +31,7 @@ sudo mkdir -p /data/nitrogen_log
 从默认配置文件模版拷贝一份出来使用
 
 ```shell
-cp configs/backend/app/config.example.yml configs/backend/app/config.default.yml 
-cp configs/backend/.env.example configs/backend/.env
-cp configs/backend/api.local.example.env configs/backend/api.local.env
+make cp-backend-config
 ```
 
 #### 修改配置文件
@@ -73,12 +71,11 @@ cp config.STAGE.yml config.default.yml
 #### 登陆docker私库
 
 ```shell
-    docker login [私库地址]
+docker login [私库地址]
 ```
 
 #### 启动后台
 
 ```shell
-export STAGE=DEFAULT # 替换成所使用的STAGE
 make start-backend
 ```
