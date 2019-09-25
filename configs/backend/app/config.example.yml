@@ -27,7 +27,7 @@ postgreSQL:
   host: NitrogenPG
   port: 5432
   user: postgres
-  readUser: postgres
+  readUser: read_user
   readUserPwd: DB_PASSWORD
   password: DB_PASSWORD
   dbName: DB_NAME

@@ -36,6 +36,12 @@ sudo mkdir -p /data/nitrogen_log
 make cp-backend-config
 ```
 
+#### 登陆docker私库
+
+```shell
+docker login [私库地址]
+```
+
 #### 后台拉取镜像
 
 `新开启一个终端后执行下面命令`
@@ -77,12 +83,6 @@ cp config.STAGE.yml config.default.yml
 |APP_SECRET|无|skylark的对接参数|
 |APP_DOMAIN|无|skylark的对接参数|
 |TOKEN|无|应用请求校验|
-
-#### 登陆docker私库
-
-```shell
-docker login [私库地址]
-```
 
 #### 启动后台
 
