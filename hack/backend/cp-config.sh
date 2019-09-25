@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # MIT License
 
 # Copyright (c) 2019 Byzan Team
@@ -20,18 +22,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-.PHONY: cp-backend-config
-cp-backend-config: 
-	bash hack/backend/cp-config.sh
+set -o errexit
+set -o nounset
+set -o pipefail
 
-.PHONY: pull-backend
-pull-backend: 
-	make -f deploy/backend/Makefile pull
+CONFIGS=("configs/backend/app/config.default.yml" "configs/backend/.env" "configs/backend/api.local.env")
+CONFIG_EXAMPLES=("configs/backend/app/config.example.yml" "configs/backend/.env.example" "configs/backend/api.local.example.env")
 
-.PHONY: start-backend
-start-backend: 
-	make -f deploy/backend/Makefile up
+cpConfig(){
+    i=0
+    for (( i=0; i<=$(( ${#CONFIGS[@]} -1 )); i++ ))
+    do
+        if [ ! -z "${CONFIGS[$i]}" ];then
+            cp "${CONFIG_EXAMPLES[$i]}" "${CONFIGS[$i]}"
+        fi
+    done
+}
 
-.PHONY: stop-backend
-stop-backend: 
-	make -f deploy/backend/Makefile down	
+cpConfig
