@@ -97,7 +97,7 @@ services:
     - nitrogen
 
   dataSource:
-    image: registry.ap-northeast-1.aliyuncs.com/byzanteam/nitrogen-datasource:${TAG}
+    image: registry.cn-hongkong.aliyuncs.com/byzanteam/nitrogen-datasource:${TAG}
     container_name: datasource
     env_file:
     - api.local.env
@@ -112,7 +112,7 @@ services:
     - nitrogen
 
   projects:
-    image: registry.ap-northeast-1.aliyuncs.com/byzanteam/nitrogen-go:${TAG}
+    image: ${REGISTRY}/byzanteam/nitrogen-go:${TAG}
     container_name: projects
     command: ["/nitrogen-go/projects"]
     environment:
@@ -133,7 +133,7 @@ services:
       - nitrogen
 
   authentication:
-    image: registry.ap-northeast-1.aliyuncs.com/byzanteam/nitrogen-go:${TAG}
+    image: ${REGISTRY}/byzanteam/nitrogen-go:${TAG}
     container_name: authentication
     command: ["/nitrogen-go/authentication"]
     environment:
@@ -155,7 +155,7 @@ services:
       - nitrogen
 
   etl:
-    image: registry.ap-northeast-1.aliyuncs.com/byzanteam/nitrogen-go:${TAG}
+    image: ${REGISTRY}/byzanteam/nitrogen-go:${TAG}
     container_name: etl
     command: ["/nitrogen-go/etl"]
     environment:
@@ -176,7 +176,7 @@ services:
       - nitrogen
 
   gateway:
-    image: registry.ap-northeast-1.aliyuncs.com/byzanteam/nitrogen-go:${TAG}
+    image: ${REGISTRY}/byzanteam/nitrogen-go:${TAG}
     container_name: gateway
     command: ["/nitrogen-go/gateway"]
     environment:
