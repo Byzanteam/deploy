@@ -95,7 +95,7 @@ services:
     networks:
     - nitrogen
 
-  datasource:
+  dataSource:
     image: registry.ap-northeast-1.aliyuncs.com/byzanteam/nitrogen-datasource:${TAG}
     container_name: datasource
     env_file:
