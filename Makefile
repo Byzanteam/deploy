@@ -22,12 +22,12 @@
 
 .PHONY: cp-backend-config
 cp-backend-config: 
-	cp configs/backend/app/config.example.yml configs/backend/app/config.default.yml 
-	cp configs/backend/.env.example configs/backend/.env
-	cp configs/backend/api.local.example.env configs/backend/api.local.env
+	[ ! -f configs/backend/app/config.default.yml ] && cp configs/backend/app/config.example.yml configs/backend/app/config.default.yml  
+	[ ! -f configs/backend/.env ] && cp configs/backend/.env.example configs/backend/.env 
+	[ ! -f configs/backend/api.local.env ] && cp configs/backend/api.local.example.env configs/backend/api.local.env 
 
 .PHONY: pull-backend
-start-backend: 
+pull-backend: 
 	make -f deploy/backend/Makefile pull
 
 .PHONY: start-backend
