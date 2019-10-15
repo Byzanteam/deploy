@@ -97,7 +97,7 @@ services:
     - nitrogen
 
   dataSource:
-    image: registry.cn-hongkong.aliyuncs.com/byzanteam/nitrogen-datasource:${TAG}
+    image: ${REGISTRY}/byzanteam/nitrogen-datasource:${TAG}
     container_name: datasource
     env_file:
     - api.local.env
