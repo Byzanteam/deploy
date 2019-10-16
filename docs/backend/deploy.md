@@ -28,6 +28,13 @@ sudo mkdir -p /data/minio
 sudo mkdir -p /data/nitrogen_log
 ```
 
+#### 下载部署文档
+
+```shell
+git clone https://github.com/Byzanteam/deploy.git
+cd deploy
+```
+
 #### 拷贝配置文件
 
 从默认配置文件模版拷贝一份出来使用
