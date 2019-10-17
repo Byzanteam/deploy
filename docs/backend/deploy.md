@@ -95,7 +95,7 @@ cp config.STAGE.yml config.default.yml
 
 #### 利用工具替换环境变量(可选)
 
-1. 修改模版文件`keys.conf`
+1. 修改模版文件`envs.conf`
 
 2. 执行命令批量替换配置文件
 

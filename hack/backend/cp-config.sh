@@ -26,8 +26,8 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-CONFIGS=("configs/backend/app/config.default.yml" "configs/backend/.env" "configs/backend/api.local.env" "configs/backend/keys.conf" "configs/backend/initdb/init.sql" "configs/backend/databot/minio/config/config.json")
-CONFIG_EXAMPLES=("configs/backend/app/config.example.yml" "configs/backend/.env.example" "configs/backend/api.local.example.env" "configs/backend/keys.conf.example" "configs/backend/initdb/init.sql.example" "configs/backend/databot/minio/config/config.json.example")
+CONFIGS=("configs/backend/app/config.default.yml" "configs/backend/.env" "configs/backend/api.local.env" "configs/backend/envs.conf" "configs/backend/initdb/init.sql" "configs/backend/databot/minio/config/config.json")
+CONFIG_EXAMPLES=("configs/backend/app/config.example.yml" "configs/backend/.env.example" "configs/backend/api.local.example.env" "configs/backend/envs.conf.example" "configs/backend/initdb/init.sql.example" "configs/backend/databot/minio/config/config.json.example")
 
 cpConfig(){
     i=0
