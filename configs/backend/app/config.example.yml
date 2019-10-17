@@ -19,7 +19,7 @@ redis:
   # TODO change this into real ip or dns
   redisUrl: redis://:@redis:6379/0
 rabbitMq:
-  rabbitMqUrl: amqp://MQ_USER:MQ_PASS@NitrogenRM:5672
+  rabbitMqUrl: amqp://${MQ_USER}:${MQ_PASS}@NitrogenRM:5672
   rawDataQueue: raw_table_data
   rawDataRoutingKey: table_data
   rawDataExchange: raw_data
@@ -28,20 +28,20 @@ postgreSQL:
   port: 5432
   user: postgres
   readUser: read_user
-  readUserPwd: DB_PASSWORD
-  password: DB_PASSWORD
-  dbName: DB_NAME
+  readUserPwd: ${DB_PASSWORD}
+  password: ${DB_PASSWORD}
+  dbName: ${DB_NAME}
   testDBName: test
 geoCode:
-  APIUrl: https://restapi.amap.com/v3/geocode/geo?key=GEO_KEY&address=
+  APIUrl: https://restapi.amap.com/v3/geocode/geo?key=${GEO_KEY}&address=
 auth:
   Port: authentication:50051
 project:
   Port: projects:50052
   NamespaceID: 1
-  AppID: APP_ID
-  AppSecret: APP_SECRET
-  AppDomain: APP_DOMAIN
+  AppID: ${APP_ID}
+  AppSecret: ${APP_SECRET}
+  AppDomain: ${APP_DOMAIN}
   OrgURLSuffix: api/v4/organizations/
   FounderID: 1
 dataSource:
@@ -49,5 +49,5 @@ dataSource:
 elasticsearch:
   Port: 9200
   Host: http://NitrogenMaster
-authToken:
-  Token: TOKEN
+auth${TOKEN}:
+  ${TOKEN}: ${TOKEN}
