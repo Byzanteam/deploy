@@ -91,8 +91,57 @@ cp config.STAGE.yml config.default.yml
 |APP_DOMAIN|无|skylark的对接参数|
 |TOKEN|无|应用请求校验|
 
+#### 利用工具替换环境变量(可选)
+
+1. 从[download](https://github.com/jonyhy96/replacer/releases)下载对应平台的可执行文件
+
+2. 运行命令解压下载文件并放入PATH下
+
+```shell
+tar -zxvf replacer_VERSION_OS.tar.gz
+cp replacer /usr/local/bin
+```
+
+3. 编写对应的替换模版 `keys.json`
+
+```shell
+vi keys.json
+```
+
+```json
+{
+    "MQ_USER": "example",
+    "MQ_PASS": "example",
+    "GEO_KEY": "example",
+    "MINIO_ACCESS": "example",
+    "MINIO_SECRET": "example",
+    "DB_PASSWORD": "example",
+    "DB_NAME": "example",
+    "APP_ID": "example",
+    "APP_SECRET": "example",
+    "APP_DOMAIN": "example",
+    "TOKEN": "example"
+}
+```
+
+4. 执行替换命令
+
+```shell
+replacer -f ./keys.json -w ./configs/backend -e config.example.yml,.env.example,api.local.example.env
+```
+
 #### 启动后台
 
 ```shell
 make start-backend
 ```
+
+#### 停止后台服务
+
+```shell
+make stop-backend
+```
+
+#### 遇到问题
+
+[帮助文档](https://github.com/Byzanteam/deploy/issues)
