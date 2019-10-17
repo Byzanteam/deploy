@@ -35,6 +35,8 @@ git clone https://github.com/Byzanteam/deploy.git
 cd deploy
 ```
 
+`以下所有命令均在deploy目录下执行`
+
 #### 拷贝配置文件
 
 从默认配置文件模版拷贝一份出来使用
@@ -93,41 +95,12 @@ cp config.STAGE.yml config.default.yml
 
 #### 利用工具替换环境变量(可选)
 
-1. 从[download](https://github.com/jonyhy96/replacer/releases)下载对应平台的可执行文件
+1. 修改模版文件`keys.conf`
 
-2. 运行命令解压下载文件并放入PATH下
-
-```shell
-tar -zxvf replacer_VERSION_OS.tar.gz
-cp replacer /usr/local/bin
-```
-
-3. 编写对应的替换模版 `keys.json`
+2. 执行命令批量替换配置文件
 
 ```shell
-vi keys.json
-```
-
-```json
-{
-    "MQ_USER": "example",
-    "MQ_PASS": "example",
-    "GEO_KEY": "example",
-    "MINIO_ACCESS": "example",
-    "MINIO_SECRET": "example",
-    "DB_PASSWORD": "example",
-    "DB_NAME": "example",
-    "APP_ID": "example",
-    "APP_SECRET": "example",
-    "APP_DOMAIN": "example",
-    "TOKEN": "example"
-}
-```
-
-4. 执行替换命令
-
-```shell
-replacer -f ./keys.json -w ./configs/backend -e config.example.yml,.env.example,api.local.example.env
+make replace-backend-config
 ```
 
 #### 启动后台

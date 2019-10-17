@@ -49,5 +49,5 @@ dataSource:
 elasticsearch:
   Port: 9200
   Host: http://NitrogenMaster
-auth${TOKEN}:
-  ${TOKEN}: ${TOKEN}
+authToken:
+  Token: ${TOKEN}
