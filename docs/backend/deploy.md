@@ -28,6 +28,15 @@ sudo mkdir -p /data/minio
 sudo mkdir -p /data/nitrogen_log
 ```
 
+#### 下载部署文档
+
+```shell
+git clone https://github.com/Byzanteam/deploy.git
+cd deploy
+```
+
+`以下所有命令均在deploy目录下执行`
+
 #### 拷贝配置文件
 
 从默认配置文件模版拷贝一份出来使用
@@ -84,8 +93,28 @@ cp config.STAGE.yml config.default.yml
 |APP_DOMAIN|无|skylark的对接参数|
 |TOKEN|无|应用请求校验|
 
+#### 利用工具替换环境变量(可选)
+
+1. 修改模版文件`envs.conf`
+
+2. 执行命令批量替换配置文件
+
+```shell
+make replace-backend-config
+```
+
 #### 启动后台
 
 ```shell
 make start-backend
 ```
+
+#### 停止后台服务
+
+```shell
+make stop-backend
+```
+
+#### 遇到问题
+
+[帮助文档](https://github.com/Byzanteam/deploy/issues)

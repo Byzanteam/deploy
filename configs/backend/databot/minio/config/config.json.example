@@ -1,8 +1,8 @@
 {
   "version": "33",
   "credential": {
-    "accessKey": "MINIO_ACCESS",
-    "secretKey": "MINIO_SECRET",
+    "accessKey": "${MINIO_ACCESS}",
+    "secretKey": "${MINIO_SECRET}",
     "expiration": "1970-01-01T00:00:00Z",
     "status": "enabled"
   },
