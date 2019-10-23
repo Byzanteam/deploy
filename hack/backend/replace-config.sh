@@ -28,8 +28,6 @@ set -o pipefail
 
 CONFIGS=("configs/backend/app/config.default.yml" "configs/backend/databot/minio/config/config.json" "configs/backend/initdb/init.sql" "configs/backend/.env" "configs/backend/api.local.env")
 
-source configs/backend/keys.conf
-
 rpConfig(){
     i=0
     for (( i=0; i<=$(( ${#CONFIGS[@]} -1 )); i++ ))
