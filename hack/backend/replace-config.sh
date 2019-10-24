@@ -28,7 +28,7 @@ set -o pipefail
 
 CONFIGS=("configs/backend/app/config.default.yml" "configs/backend/databot/minio/config/config.json" "configs/backend/initdb/init.sql" "configs/backend/.env" "configs/backend/api.local.env")
 
-source configs/backend/keys.conf
+source configs/backend/envs.conf
 
 rpConfig(){
     i=0
