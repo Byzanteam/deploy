@@ -12,20 +12,14 @@
 #### 预执行脚本
 
 ```shell
-sudo sysctl -w vm.max_map_count=262144
 sudo mkdir /data
 sudo chmod 777 /data
-# ES_MASTER_PATH 
-sudo mkdir -p /data/master
-sudo chmod g+rws /data/master
 # PG_PATH
 sudo mkdir -p /data/pg
 # REDIS PATH
 sudo mkdir -p /data/redis
 # MINIO_PATH
 sudo mkdir -p /data/minio
-# LOGS_PATH
-sudo mkdir -p /data/nitrogen_log
 ```
 
 #### 下载部署文档
@@ -88,10 +82,6 @@ cp config.STAGE.yml config.default.yml
 |MINIO_SECRET|无|minio secret key|
 |DB_PASSWORD|无|数据库密码|
 |DB_NAME|无|数据库名称|
-|APP_ID|无|skylark的对接参数|
-|APP_SECRET|无|skylark的对接参数|
-|APP_DOMAIN|无|skylark的对接参数|
-|TOKEN|无|应用请求校验|
 
 #### 利用工具替换环境变量(可选)
 
