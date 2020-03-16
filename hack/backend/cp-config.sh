@@ -26,8 +26,8 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-CONFIGS=("configs/backend/configs/config.default.yml" "configs/backend/.env" "configs/backend/api.local.env" "configs/backend/envs.conf" "configs/backend/initdb/init.sql")
-CONFIG_EXAMPLES=("configs/backend/configs/config.example.yml" "configs/backend/.env.example" "configs/backend/api.local.example.env" "configs/backend/envs.conf.example" "configs/backend/initdb/init.sql.example")
+CONFIGS=("configs/backend/configs/config.default.yml" "configs/backend/.env" "configs/backend/api.local.env" "configs/backend/envs.conf")
+CONFIG_EXAMPLES=("configs/backend/configs/config.example.yml" "configs/backend/.env.example" "configs/backend/api.local.example.env" "configs/backend/envs.conf.example")
 
 cpConfig(){
     i=0
