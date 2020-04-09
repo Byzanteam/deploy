@@ -26,7 +26,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-CONFIGS=("configs/backend/configs/config.default.yml" "configs/backend/.env" "configs/backend/api.local.env")
+CONFIGS=("configs/backend/configs/config.yml" "configs/backend/.env")
 
 source configs/backend/envs.conf
 

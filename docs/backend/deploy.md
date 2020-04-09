@@ -4,6 +4,7 @@
 
 ### 环境需求
 
+ - linux
  - docker ^18.06
  - docker-compose ^1.20
 
@@ -53,35 +54,26 @@ docker login [私库地址]
 make pull-backend
 ```
 
-#### 修改配置文件
-
- 1. 配置目录 `configs/backend/.env`中的环境变量 `STAGE`
- 2. 将`configs/backend/app`下配置文件重命名
-
-|阶段名|STAGE|文件名|
-|:--:|:--:|:--:|
-|默认|DEFAULT|config.default.yml|
-|生产|PROD|config.prod.yml|
-|测试|TEST|config.test.yml|
-
-例如:
-
-```
-vi configs/backend/.env # 将STAGE设置为DEFAULT
-cp config.STAGE.yml config.default.yml
-```
-
 #### 替换环境变量
 
-|变量名|默认值|描述|
-|:--:|:--:|:--:|
-|MQ_USER|guest|RABBITMQ用户名|
-|MQ_PASS|guest|RABBITMQ密码|
-|GEO_KEY|无|geo服务所需密钥|
-|MINIO_ACCESS|无|minio access key|
-|MINIO_SECRET|无|minio secret key|
-|DB_PASSWORD|无|数据库密码|
-|DB_NAME|无|数据库名称|
+根据以下描述替换 `configs/backend/.envs.conf` 中环境变量的值
+
+|变量名|默认值|描述|是否必须|
+|:--:|:--:|:--:|:--:|
+|STAGE|prod|项目阶段(只有为prod才会使用sentry采集日志)|true|
+|MQ_USER|guest|RABBITMQ用户名|true|
+|MQ_PASS|guest|RABBITMQ密码|true|
+|GEO_KEY|无|geo服务所需高德接口密钥|false|
+|MINIO_ACCESS|无|minio access key|true|
+|MINIO_SECRET|无|minio secret key|true|
+|DB_PASSWORD|无|数据库密码|true|
+|DB_NAME|无|数据库名称|true|
+|SENTRY_DSN|无|sentry日志收集配置|false|
+|SMS_ENABLE|true|是否启用短信服务|true|
+|SMS_ACCESS_KEY_ID|无|短信服务id|true|
+|SMS_ACCESS_KEY_SECRET|无|短信服务密钥|true|
+|SMS_SIGN_NAME|无|短信服务签名|true|
+|SMS_TEMPLATE_CODE|无|短信服务模版id|true|
 
 #### 利用工具替换环境变量(可选)
 
@@ -92,6 +84,12 @@ cp config.STAGE.yml config.default.yml
 ```shell
 make replace-backend-config
 ```
+
+#### 地址转经纬度功能配置(可选)
+
+1. 修改`configs/backend/geo.json`内容
+
+2. uncomment`configs/backend/docker-compose.yml`中的geo service
 
 #### 启动后台
 

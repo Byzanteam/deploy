@@ -1,0 +1,11 @@
+{
+    "geo": {
+        "extraInfo": "四川成都",
+        "addressConfigs": [
+            {
+                "field": "address",
+                "table": "address_table"
+            }
+        ]
+    }
+}
