@@ -26,7 +26,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-CONFIGS=("configs/backend/app/config.default.yml" "configs/backend/databot/minio/config/config.json" "configs/backend/initdb/init.sql" "configs/backend/.env" "configs/backend/api.local.env")
+CONFIGS=("configs/backend/configs/config.default.yml" "configs/backend/.env" "configs/backend/api.local.env")
 
 source configs/backend/envs.conf
 

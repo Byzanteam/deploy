@@ -1,0 +1,35 @@
+stage: NITROGEN_STAGE
+server:
+  http:
+    port: 8000
+    addr: 0.0.0.0
+log:
+  level: debug
+  enableCaller: true
+  format: json
+storage:
+  postgres:
+    host: postgres
+    password: ${DB_PASSWORD}
+    dbName: ${DB_NAME}
+    port: 5432
+    user: postgres
+    sslmode: disable
+    testDBName: test
+  redis:
+    url: redis://:@redis:6379/0
+  minio:
+    url: minio:9000
+    ak: ${MINIO_ACCESS}
+    sk: ${MINIO_SECRET}
+    ssl: false
+    LibraryBucketName: vis-libraries
+queue:
+  rabbitMQ:
+    url: amqp://${MQ_USER}:${MQ_PASS}@rabbitmq:5672
+    componentLibraries: componentLibraries
+elasticsearch:
+  port: 9200
+  host: http://elasticsearch
+sentry:
+  dsn: NITROGEN_SENTRY_DSN
