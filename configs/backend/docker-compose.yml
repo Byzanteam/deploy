@@ -1,35 +1,65 @@
 version: '3.5'
 services:
 
+  nitrogen:
+    image: ${NITROGEN_REGISTRY}/byzanteam/nitrogen
+    container_name: nitrogen
+    ports:
+      - ${NITROGEN_PORT}:8080
+    depends_on:	
+      - redis
+      - minio	
+      - rabbitmq	
+      - postgres  
+      - migrate
+    volumes:
+      - ./configs:/nitrogen/configs
+    networks:
+      - nitrogen
+
+  migrate:
+    image: ${NITROGEN_REGISTRY}/byzanteam/nitrogen
+    container_name: migrate
+    command: ["migrate"]
+    depends_on:		
+      - postgres     
+    volumes:
+      - ./configs:/nitrogen/configs
+    networks:
+      - nitrogen
+
+  # uncomment if needed
+  # geo: 
+  #   image: ${NITROGEN_REGISTRY}/byzanteam/nitrogen
+  #   container_name: geo
+  #   command: ["geo","-c","geo","-i","1 hour"]
+  #   volumes:
+  #     - ./configs:/nitrogen/configs
+  #   networks:
+  #     - nitrogen    
+
   postgres:
-    image: ${POSTGRES_IMAGE}
+    image: ${NITROGEN_REGISTRY}/byzanteam/nitrogen-postgres
     container_name: ${POSTGRES_NAME}
-#    restart: always
-    env_file:
-    - api.local.env
     ports:
     - ${POSTGRES_PORT}:5432
-    networks:
-    - nitrogen
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
     volumes:
-    - ${POSTGRES_PATH}:/var/lib/postgresql/data:z
-    - ./initdb:/docker-entrypoint-initdb.d
+      - ${POSTGRES_PATH}:/var/lib/postgresql/data:z
+    networks:
+      - nitrogen
 
   rabbitmq:
     image: ${RABITTMQ_IMAGE}
     container_name: ${RABITTMQ_NAME}
-    env_file:
-    - api.local.env
-#    restart: always
     ports:
-    - ${RABITTMQ_PORT}:5672
+      - ${RABITTMQ_PORT}:5672
     networks:
-    - nitrogen
+      - nitrogen
 
   redis:
     image: ${REDIS_IMAGE}
@@ -43,11 +73,8 @@ services:
   minio:
     image: ${MINIO_IMAGE}
     container_name: ${MINIO_NAME}
-    env_file:
-      - api.local.env
     ports:
-    - ${MINIO_PORT}:9000
-#    restart: always
+      - ${MINIO_PORT}:9000
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
       interval: 30s
@@ -55,7 +82,7 @@ services:
       retries: 3
     entrypoint: "minio server --config-dir /config /data"
     networks:
-    - nitrogen
+      - nitrogen
 
 networks:
   nitrogen:

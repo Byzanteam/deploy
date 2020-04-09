@@ -1,4 +1,4 @@
-stage: NITROGEN_STAGE
+stage: ${STAGE}
 server:
   http:
     port: 8000
@@ -28,8 +28,13 @@ queue:
   rabbitMQ:
     url: amqp://${MQ_USER}:${MQ_PASS}@rabbitmq:5672
     componentLibraries: componentLibraries
-elasticsearch:
-  port: 9200
-  host: http://elasticsearch
 sentry:
-  dsn: NITROGEN_SENTRY_DSN
+  dsn: ${SENTRY_DSN}
+sms:
+  enable: ${SMS_ENABLE}
+  region: cn-hangzhou
+  scheme: https
+  accessKeyId: ${SMS_ACCESS_KEY_ID}
+  accessKeySecret: ${SMS_ACCESS_KEY_SECRET}
+  signName: ${SMS_SIGN_NAME}
+  templateCode: ${SMS_TEMPLATE_CODE}
